@@ -1,3 +1,7 @@
+bzip2 >= 1.0.6
+freetype >= 2.5.5
 glibc-solibs >= 2.15
+libpng >= 1.4.19
 libxml2 >= 2.8.0
+xz >= 5.0.4
 zlib >= 1.2.6
