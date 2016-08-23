@@ -19,13 +19,13 @@
 #
 # Visit SlackPack at http://sotirov-bg.net/slackpack/
 #
-# $Id: libbluray.SlackBuild,v 1.2 2016/08/23 19:48:59 gsotirov Exp $
+# $Id: libbluray.SlackBuild,v 1.3 2016/08/23 20:14:40 gsotirov Exp $
 #
 
 . ../../slack-package.conf
 
 NAME=libbluray
-VERSION=0.5.0
+VERSION=0.8.1
 ARCH=${ARCH:-i486}
 BUILD=${BUILD:-1}
 
@@ -64,11 +64,13 @@ CXXFLAGS=$SLKCFLAGS \
             --libdir=/usr/lib${LIBDIRSUFFIX} \
             --docdir=/usr/doc/${NAME}-${VERSION} \
             --enable-shared=yes \
-            --enable-static=no || exit 4
+            --enable-static=no \
+            --enable-udf \
+            --disable-bdjava || exit 4
 
 # Build & install
-make -j4 || exit 5
-make -e DESTDIR=$PKG install || exit 6
+make V=1 -j4 || exit 5
+make DESTDIR=$PKG install || exit 6
 
 bin_perms $PKG
 ( cd $PKG; strip_lib )
